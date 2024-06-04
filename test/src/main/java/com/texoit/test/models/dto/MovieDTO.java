@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 public class MovieDTO {
-    private String name;
+    private String title;
 
     private Integer year;
 
@@ -21,7 +21,7 @@ public class MovieDTO {
     private String winner;
 
     public MovieDTO(Movie movie){
-        this.name= movie.getName();
+        this.title= movie.getTitle();
         this.year = movie.getYear();
         this.producers = movie.getProducers();
         this.studios = movie.getStudios();

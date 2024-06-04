@@ -21,7 +21,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
+    private String title;
     private String producers;
     private String studios;
     private String winner;
