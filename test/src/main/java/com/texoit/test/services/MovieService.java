@@ -58,7 +58,6 @@ public class MovieService {
             }
         }
 
-        // Sort the years for each producer
         for (List<Integer> years : producerAwards.values()) {
             Collections.sort(years);
         }
