@@ -33,6 +33,7 @@ public class MovieService {
                     .build();
 
             List<Movie> movies = csvToBean.parse();
+            movieRepository.deleteAll();
             movieRepository.saveAll(movies);
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,9 +53,13 @@ public class MovieService {
         Map<String, List<Integer>> producerAwards = new HashMap<>();
 
         for (Movie movie : winners) {
-            String[] producers = movie.getProducers().split(",\\s*");
+            String[] producers = movie.getProducers().split(",| and ");
             for (String producer : producers) {
-                producerAwards.computeIfAbsent(producer, k -> new ArrayList<>()).add(movie.getYear());
+                producer = producer.trim();
+                if (!producerAwards.containsKey(producer)) {
+                    producerAwards.put(producer, new ArrayList<>());
+                }
+                producerAwards.get(producer).add(movie.getYear());
             }
         }
 
